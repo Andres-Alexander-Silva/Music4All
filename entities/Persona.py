@@ -1,15 +1,12 @@
 class Persona():
     
     def __init__(self, nombre, apellido):
-        # self.id = id
+        self.id = id
         self.nombre = nombre
         self.apellido = apellido
     
-    # def getId(self):
-    #    return self.id
-    
-    # def setId(self, id):
-    #     self.id = id
+    def getId(self):
+       return self.id
     
     def getNombre(self):
         return self.nombre
