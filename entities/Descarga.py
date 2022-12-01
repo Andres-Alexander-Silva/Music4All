@@ -1,4 +1,5 @@
 import InformacionURL as infoUrl
+
 class Descarga(infoUrl.InformacionURL):
     
     def __init__(self, id_descarga, infoUrl, User):
