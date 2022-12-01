@@ -13,7 +13,7 @@ def index():
     usuario1 = Usuario("Madi", "Garcia", "MadiG56", "contraseña879")
     infoUrl = InformacionURL("Mojando asientos", "4:12", "Maluma y Feid")
     
-    return url.consultar_id(1).__str__()
+    return url.consultar().__str__()
 
 if __name__ == "__main__":
     app.config.from_object(config['development'])

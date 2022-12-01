@@ -42,19 +42,3 @@ class DescargaDao():
     @classmethod
     def consultar_id(self, id):
         pass
-    
-    @classmethod
-    def borrar(self, id):
-        try:
-            conexion = obtener_conexion()
-            
-            with conexion.cursor() as cursor:
-                sql_delete = "DELETE FROM Descarga WHERE id = %s"
-                cursor.execute(sql_delete, (id))
-                
-            conexion.commit()
-            conexion.close()
-            
-            return "Borrado Exitosamente"
-        except Exception as ex:
-            raise Exception(ex)
