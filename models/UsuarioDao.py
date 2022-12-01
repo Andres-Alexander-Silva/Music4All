@@ -1,23 +1,26 @@
-from db import obtener_conexion 
-class PersonaDao():
+from db import obtener_conexion
+
+class UsuarioDao():
     
     @classmethod
-    def insertar(self, persona):
+    def insertar(self, usuario):
         try:
-            nombre = persona.getNombre()
-            apellido = persona.getApellido()
-        
+            nombre = usuario.getNombre()
+            apellido = usuario.getApellido()
+            username = usuario.getUsuario()
+            password = usuario.getContrasegna()
+            
             conexion = obtener_conexion()
             
             with conexion.cursor() as cursor:
-                sql_insert = "INSERT INTO Persona (id,nombre,apellido) VALUES (Null, %s, %s)"
-                datos = (nombre, apellido)
+                sql_insert = "INSERT INTO Usuarios (id, nombre, apellido, usuario, contraseña) VALUES (Null, %s, %s, %s, %s)"
+                datos = (nombre, apellido,username, password)
                 cursor.execute(sql_insert, datos)
             
             conexion.commit()
             conexion.close()
             
-            return "Registrado con Exito"
+            return "Usuario registrado con exito"             
         except Exception as ex:
             raise Exception(ex)
     
@@ -25,52 +28,53 @@ class PersonaDao():
     def consultar(self):
         try:
             conexion = obtener_conexion()
-            personas = []
+            usuarios = []
             
             with conexion.cursor() as cursor:
-                sql_select = "SELECT * FROM Persona"
+                sql_select = "SELECT * FROM Usuarios"
                 cursor.execute(sql_select)
-                personas = cursor.fetchall()
-            
+                usuarios = cursor.fetchall()
+                
             conexion.close()
-            
-            return personas
-        except Exception as ex:
-            raise Exception(ex)
-    
-    @classmethod
-    def consultar_id(self, id):
-        try:
-            conexion = obtener_conexion()
-            persona = None
-            
-            with conexion.cursor() as cursor:
-                sql_select_id = "SELECT * FROM Persona WHERE id = %s"
-                cursor.execute(sql_select_id, (id))
-                persona = cursor.fetchone()
-            
-            conexion.close()
-            
-            return persona
+                
+            return usuarios
         except Exception as ex:
             raise Exception(ex)
         
     @classmethod
-    def actualizar(self, persona, id):
+    def consultar_id(self, id):
         try:
             conexion = obtener_conexion()
-            nombre = persona.getNombre()
-            apellido = persona.getApellido()
+            usuario = None
             
             with conexion.cursor() as cursor:
-                sql_update = "UPDATE Persona SET nombre = %s, apellido = %s WHERE id = %s"
-                datos = (nombre, apellido, id)
-                cursor.execute(sql_update, datos)
+                sql_select_id = "SELECT * FROM Usuarios WHERE id = %s"
+                cursor.execute(sql_select_id, (id))
+                usuario = cursor.fetchone()
+                
+            conexion.close()
+                
+            return usuario
+        except Exception as ex:
+            raise Exception(ex)
+        
+    @classmethod
+    def actualizar(self, usuario, id):
+        try:
+            conexion = obtener_conexion()
+            nombre = usuario.getNombre()
+            apellido = usuario.getApellido()
+            password = usuario.getContrasegna()
             
+            with conexion.cursor() as cursor:
+                sql_update = "UPDATE Usuarios SET nombre = %s, apelldio = %s, usuario = %s, contraseña = %s WHERE id = %s"
+                datos = (nombre, apellido, password, id)
+                cursor.execute(sql_update, datos)
+                
             conexion.commit()
             conexion.close()
-            
-            return "Actualizacion Exitosa"
+                
+            return "Actualizacion realizada"
         except Exception as ex:
             raise Exception(ex)
     
@@ -80,12 +84,12 @@ class PersonaDao():
             conexion = obtener_conexion()
             
             with conexion.cursor() as cursor:
-                sql_dalete = "DELETE FROM Persona WHERE id = %s"
-                cursor.execute(sql_dalete, (id))
+                sql_delete = "DELETE FROM Usuarios WHERE id = %s"
+                cursor.execute(sql_delete, (id))
                 
             conexion.commit()
             conexion.close()
             
-            return "Borrado exitoso"
+            return "Borrado Exitoso"
         except Exception as ex:
             raise Exception(ex)

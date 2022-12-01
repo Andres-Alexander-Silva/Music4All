@@ -1,17 +1,22 @@
-import Persona as p
-
-class Usuario(p.Persona):
+class Usuario():
     
-    def __init__(self, id, usuario, contrasegna):
-        self.__id = id
+    def __init__(self, nombre, apellido, usuario, contrasegna):
+        self.__nombre = nombre
+        self.__apellido = apellido
         self.__usuario = usuario
         self.__contrasegna = contrasegna
     
-    def getId(self):
-        return self.__id
+    def getNombre(self):
+        return self.__nombre
     
-    def setId(self, id):
-        self.__id = id
+    def setNombre(self, nombre):
+        self.__nombre = nombre
+    
+    def getApellido(self):
+        return self.__apellido
+    
+    def setApellido(self, apellido):
+        self.__apellido = apellido
     
     def getUsuario(self):
         return self.__usuario

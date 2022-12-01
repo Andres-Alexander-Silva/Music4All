@@ -1,16 +1,9 @@
 class InformacionURL():
     
-    def __init__(self, id_url, url_nombre, url_duracion, url_autor):
-        self.id_url = id_url
+    def __init__(self, url_nombre, url_duracion, url_autor):
         self.url_nombre = url_nombre
         self.url_duracion = url_duracion
         self.url_autor = url_autor
-    
-    def getIdUrl(self):
-        return self.id_url
-    
-    def setIdUrl(self, id_url):
-        self.id_url = id_url
     
     def getUrlNombre(self):
         return self.url_nombre

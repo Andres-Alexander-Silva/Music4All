@@ -1,18 +1,19 @@
 from flask import Flask
 from flask import render_template
 from config import config
-from entities.Persona import Persona
-from models.PersonaDao import PersonaDao as pd
+from models.UsuarioDao import UsuarioDao as user
+from entities.Usuario import Usuario
+from models.InformacionURLDao import InformacionURLDao as url
+from entities.InformacionURL import InformacionURL 
 
 app = Flask(__name__)
 
 @app.route("/", methods=['GET','POST'])
 def index():
-    persona = Persona("Madi","Quintero")
+    usuario1 = Usuario("Madi", "Garcia", "MadiG56", "contraseña879")
+    infoUrl = InformacionURL("Mojando asientos", "4:12", "Maluma y Feid")
     
-    ##persona = pd.consultar_id(3)
-    
-    return pd.borrar(3)
+    return url.consultar_id(1).__str__()
 
 if __name__ == "__main__":
     app.config.from_object(config['development'])

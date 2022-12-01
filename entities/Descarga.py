@@ -1,11 +1,10 @@
 import InformacionURL as infoUrl
-
 class Descarga(infoUrl.InformacionURL):
     
-    def __init__(self, id_descarga, url, tipo_url):
+    def __init__(self, id_descarga, infoUrl, User):
         self.id_descarga = id_descarga
-        self.url = url
-        self.tipo_url = tipo_url
+        self.url = infoUrl
+        self.id_usuario = User
     
     def getIdDescarga(self):
         return self.id_descarga
@@ -13,17 +12,17 @@ class Descarga(infoUrl.InformacionURL):
     def setIdDescarga(self, id_descarga):
         self.id_descarga = id_descarga
     
-    def getUrl(self):
+    def getInfoUrl(self):
         return self.url
     
-    def setUrl(self, url):
-        self.url = url
+    def setUrl(self, infoUrl):
+        self.url = infoUrl
     
-    def getTipoUrl(self):
-        return self.tipo_url
+    def getUsuario(self):
+        return self.id_usuario
     
-    def setTipoUrl(self, tipo_url):
-        self.tipo_url = tipo_url
+    def setUsuario(self, User):
+        self.id_usuario = User
     
     def __str__(self):
         return "Descarga {"+"\nid= "+str(self.id_descarga)+"\nurl= "+self.url+"\ntipo= "+self.tipo_url+"}"
