@@ -20,7 +20,7 @@ class UsuarioDao():
             conexion.commit()
             conexion.close()
             
-            return "Usuario registrado con exito"             
+            return True             
         except Exception as ex:
             raise Exception(ex)
     

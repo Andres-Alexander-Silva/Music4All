@@ -41,4 +41,17 @@ class DescargaDao():
         
     @classmethod
     def consultar_id(self, id):
-        pass
+        try:
+            conexion = obtener_conexion()
+            descargas = []
+            
+            with conexion.cursor() as cursor:
+                sql_select_id = "SELECT d.id_usuario , iu.url_nombre FROM Descarga d JOIN InformacionURL iu ON (d.url = iu.url_id) WHERE d.id_usuario = %s;"
+                cursor.execute(sql_select_id, (id))
+                descargas = cursor.fetchall()
+                
+            conexion.close()
+            
+            return descargas
+        except Exception as ex:
+            raise Exception(ex)
