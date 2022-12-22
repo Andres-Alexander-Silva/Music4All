@@ -1,209 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="template.css" />
-
-    <title>Music4All</title>
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-
-    <link rel="stylesheet" href="assets/css/template.css">
-
-    </head>
-    <body style="background-color: #e9e8e8;">
-    
-    <!-- ***** Preloader Start ***** -->
-    
-    
-    
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">
-                            <img src="assets/images/pngegg (6).png" alt="Music4All"/>
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="login.html">Login/Sign in</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index_styles.css') }}">
+</head>
+<body>
+    {% extends 'base/base.html' %}
+    {% block content %}
+        <div class="index">
+            <section class="section-1">
+                <div class="titulo-index">
+                    <h1>Descarga tus videos y musica que mas te gusta aca.</h1>
                 </div>
-            </div>
-        </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
-    <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
-
-        <!-- ***** Header Text Start ***** -->
-        <div class="header-text">
-            <div class="container">
-                <div class="row">
-                    <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
-                        <h1>Descarga los videos y música que más te gusten</h1>
-                    </div>
+                <div class="barra-nav">
+                    <form action="/Music4All/buscar"  class="field" method="post">
+                        <input type="text" name="link" placeholder="Ingres el link de su cancion o video!" />
+                        <input type="submit" value="Buscar!"/>
+                    </form>
                 </div>
-            </div>
-        </div>
-        <div style="margin-top: 12rem; margin-bottom: 5rem;">
-            <div class="container">
-                <div class="row">
-                    <div class="buscar">
-                        <input type="text" placeholder="Buscar" required />
-                  
-                        <div class="btn">
-                          <i class="fas fa-search icon"></i>
+            </section>
+            <section class="section-2">
+                <div class="info">
+                    <h1>Informacion de la URL</h1>
+                </div>
+                <div class="reccomendation">
+                    <div class="a-box">
+                        <div class="img-container">
+                          <div class="img-inner">
+                            <div class="inner-skew">
+                              <img src="{{image}}">
+                            </div>
+                          </div>
                         </div>
+                        <div class="text-container">
+                          <h3>{{title2}}</h3>
+                          <div>
+                            <p>Autor: {{author}}<br>Duracion: {{duration}}</p>
+                        </div>
+                        {% if "usuario" in session%}
+                            <div class="buttoms">
+                                <form action="/Music4All/Descarga-audio" class="audio" method="post">
+                                    <input type="submit" class="mp3b" value="MP3">
+                                </form>
+                                <form action="/Music4All/Descarga-video" class="video" method="post">
+                                    <input type="submit" class="mp4b" value="MP4">
+                                </form>
+                            </div>
+                        {% endif %}
                       </div>
-                    </div>
-                </div>
-            </div>
+                      {% with messages  = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class="message-content">
+                                {% for message in messages%}
+                                <li class="message">{{message}}</li>
+                                {% endfor%}
+                            </ul>
+                        {% endif %}
+                      {% endwith %}      
+            </section>
         </div>
-        <!-- ***** Header Text End ***** -->
-    </div>
-    <!-- ***** Welcome Area End ***** -->
-
-    <!-- ***** Features Small Start ***** -->
-    <section class="section home-feature">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/musical-note (2).png" alt=""></i>
-                                </div>
-                                <h5 class="features-title">Descarga tus canciones favoritas</h5>
-                                <p>Rápido y seguro sin ningún problema</p>
-                            </div>
-                        </div>
-                        <!-- ***** Features Small Item End ***** -->
-
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/icons8-laptop-play-video-56.png" alt=""></i>
-                                </div>
-                                <h5 class="features-title">Descarga tus videos favoritos</h5>
-                                <p>Rápido y en cualquier calidad</p>
-                            </div>
-                        </div>
-                        <!-- ***** Features Small Item End ***** -->
-
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/like.png" alt=""></i>
-                                </div>
-                                <h5 class="features-title">Guardalos</h5>
-                                <p>También puedes guardar tus videos y canciones para ver más tarde</p>
-                            </div>
-                        </div>
-                        <!-- ***** Features Small Item End ***** -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Features Small End ***** -->
-
-    <!-- ***** Features Big Item Start ***** -->
-    <section class="section padding-top-70 padding-bottom-0" id="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-sm-12 align-self-center" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <img src="assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
-                </div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-top-fix">
-                    <div class="left-heading">
-                        <h2 class="section-title">About us</h2>
-                    </div>
-                    <div class="left-text">
-                        <p>Descargar videos y música de cualquier plataforma, de forma segura y rápida</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hr"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Features Big Item End ***** -->
-
-
-    
-    <!-- ***** Footer Start ***** -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <ul class="social">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                       
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="copyright">Copyright &copy; 2023 Music4All</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
-
-  </body>
+        <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    {% endblock %}
+</body>
 </html>

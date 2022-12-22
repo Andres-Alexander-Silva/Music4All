@@ -41,14 +41,14 @@ class InformacionURLDao():
             raise Exception(ex)
     
     @classmethod
-    def consultar_id(self, id):
+    def consultar_autor(self, autor):
         try:
             conexion = obtener_conexion()
             url = None
             
             with conexion.cursor() as cursor:
-                sql_select_id = "SELECT * FROM InformacionURL WHERE url_id = %s"
-                cursor.execute(sql_select_id, (id))
+                sql_select_id = "SELECT url_nombre, url_duracion, url_autor FROM `InformacionURL` WHERE url_autor = %s;"
+                cursor.execute(sql_select_id, (autor))
                 url = cursor.fetchone()
             
             conexion.close()

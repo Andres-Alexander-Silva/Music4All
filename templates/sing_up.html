@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <script src="https://kit.fontawesome.com/fec365c2f4.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sign_up_styles.css') }}">
+</head>
+<body>
+  <main class="contenedor">
+    <div class="content-form">
+      <p class="title">Sign Up</p>
+      <form action="/Music4All/Sign-Up" class="formulario" method="POST">
+          <div class="nombre">
+            <i class="fa-solid fa-user icono-user"></i>
+            <input type="text" class="user" name="nombre" placeholder="nombre" required>
+          </div>
+          <div class="apellido">
+            <i class="fa-solid fa-user icono-user"></i>
+            <input type="text" class="user" name="apellido" placeholder="apellido" required>
+          </div>
+          <div class="usuario">
+              <i class="fa-solid fa-user icono-user"></i>
+              <input type="text" class="user" name="usuario" placeholder="Usuario" required>
+          </div>
+          <div class="contrasegna">
+              <i class="fa-solid fa-key icono-pass"></i>
+              <input type="password" class="pass" name="contraseña" placeholder="Contraseña" required>
+          </div>
+          <div class="log-in">
+              <p>Si ya tienes cuenta dirigete a <a href="Login">Log-in</a></p>      
+          </div>
+          <div class="btn">
+              <input type="submit" value="Registrar">
+          </div>
+      </form>
+  </div>
+  </main>
+</body>
+</html>

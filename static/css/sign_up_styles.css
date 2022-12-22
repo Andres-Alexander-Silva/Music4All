@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: url(../img/pexels-erik-mclean-6194264.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-form{
+    justify-content: center;
+    margin-top: 10%;
+    padding: 10px;
+    background: #78F1DD;
+    border-radius: 10px;
+    width: 380px;
+    height: auto;
+}
+.formulario{
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #78F1DD;
+    position: relative;
+}
+.nombre{
+    background: #29B299;
+    height: 45px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.apellido{
+    background: #29B299;
+    height: 45px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.usuario{
+    background: #29B299;
+    height: 45px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.contrasegna{
+    background: #29B299;
+    height: 45px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.icono-user{
+    font-size: 28px;
+    background: #29B299;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icono-pass{
+    font-size: 24px;
+    background: #29B299;
+    padding: 12px 11px;
+    color: #fff;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.user{
+    width: 83%;
+    height: 100%;
+    font-size: 16px;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 60px;
+    border: 2px solid #29B299;
+    background: #fff;
+}
+.pass{
+    width: 83%;
+    height: 100%;
+    font-size: 16px;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 60px;
+    border: 2px solid #29B299;
+    background: #fff;
+}
+.title{
+    justify-content: center;
+    text-align: center;
+    color: #000;
+    font-size: 30px;
+    font-weight: bold;
+    background: #78F1DD;
+}
+.logo{
+    width: 250px;
+    height: 250px;
+    border-radius: 150px;
+    margin: 20px;
+}
+.log-in{
+    margin-bottom: 15px;
+    background: #78F1DD;
+}
+.log-in a, p{
+    background: #78F1DD;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+.log-in a {
+    color: #fff;
+}
+.btn{
+    justify-content: center;
+    text-align: center;
+    background: #78F1DD;
+}
+.btn input{
+    background: #2AB6C6;
+    font-size: 20px;
+    padding: 5px 35px;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid #2AB6C6;
+    border-radius: 5px;
+    color: #000;
+}
+.btn input:hover{
+    background: #2D838E;
+    color: #fff;
+    transition: all .2s;
+    border: 2px solid #2D838E;
+}
+@media (max-width: 800px){
+    *{
+        background-image: url(../img/pexels-erik-mclean-6194264.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .content-form{
+        width: 300px;
+        margin-top: 10vh;
+    }
+    .user{
+        width: 78%;
+    }
+    .pass{
+        width: 78%;
+    }
+}

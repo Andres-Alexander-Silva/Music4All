@@ -42,14 +42,14 @@ class UsuarioDao():
             raise Exception(ex)
         
     @classmethod
-    def consultar_id(self, id):
+    def consultar_id(self, usuarioI):
         try:
             conexion = obtener_conexion()
             usuario = None
             
             with conexion.cursor() as cursor:
-                sql_select_id = "SELECT * FROM Usuarios WHERE id = %s"
-                cursor.execute(sql_select_id, (id))
+                sql_select_id = "SELECT usuario,contraseña FROM Usuarios WHERE usuario = %s"
+                cursor.execute(sql_select_id, (usuarioI))
                 usuario = cursor.fetchone()
                 
             conexion.close()
@@ -59,16 +59,13 @@ class UsuarioDao():
             raise Exception(ex)
         
     @classmethod
-    def actualizar(self, usuario, id):
+    def actualizar(self, usuario, password):
         try:
             conexion = obtener_conexion()
-            nombre = usuario.getNombre()
-            apellido = usuario.getApellido()
-            password = usuario.getContrasegna()
             
             with conexion.cursor() as cursor:
-                sql_update = "UPDATE Usuarios SET nombre = %s, apelldio = %s, usuario = %s, contraseña = %s WHERE id = %s"
-                datos = (nombre, apellido, password, id)
+                sql_update = "UPDATE Usuarios SET contraseña = %s WHERE id = %s"
+                datos = (password, usuario)
                 cursor.execute(sql_update, datos)
                 
             conexion.commit()

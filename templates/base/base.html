@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" 
+    content="Esta es una web para descargar musica y videos de Youtube de forma segura">
+    <meta name="autor" content="Andres Silva Ing. Sistemas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <script src="https://kit.fontawesome.com/b025f72846.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base_styles.css') }}">
+</head>
+<body>
+    <!-- Cabezera de la pagina -->
+    <nav class="contenedor-h">
+        <img src="{{ url_for('static', filename='img/pngegg (6).png') }}" class="logo">
+        <ul>
+            {% if "usuario" in session %}
+                <li><a href="/Music4All">Inico</a></li>
+                <li><a href="/Music4All/Salir">Salir</a></li>
+            {% else %}
+                <li><a href="/Music4All">Inicio</a></li>
+                <li><a href="/Music4All/Login">Login</a></li>
+                <li><a href="/Music4All/Sign-Up">Sign-Up</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <!-- Contenido que va cambiando en las demas paginas -->
+    {% block content %}
+    {% endblock %}
+    <!-- Pie de pagina  -->
+    <footer>
+        <div class="contenedor-f">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/pngegg (6).png') }}" class="logo-f" alt="Music4All">
+            </div>
+            <div class="info">
+                <p>Desacaga tus videos y musica favorita en nuestra web Music4All<br>
+                y no tengas miedo de descargar viruz que en nuestra web todo es limpio y legal.
+                </p>
+            </div>
+            <div class="social">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
